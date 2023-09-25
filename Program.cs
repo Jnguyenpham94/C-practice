@@ -16,6 +16,8 @@ class MyClass
             Console.WriteLine("3. Reverse word order");
             Console.WriteLine("4. Reverse word order with join");
             Console.WriteLine("5. Palindrome");
+            Console.WriteLine("6. Substring in String");
+            Console.WriteLine("7. Is Prime");
             Console.WriteLine("exit");
             string? input = Console.ReadLine();
             if (input == null)
@@ -49,6 +51,15 @@ class MyClass
                         IsPalindrome();
                         break;
                     }
+                case "6":
+                    {
+                        Console.WriteLine(SubstringInString());
+                        break;
+                    }
+                case "7":
+                    {
+                        break;
+                    }
                 case "exit":
                     {
                         go = false;
@@ -68,11 +79,7 @@ class MyClass
         Console.WriteLine("Enter a string of numbers separated by commas for their average: ");
         List<int> result = new List<int>();
         string? input = Console.ReadLine();
-        if (input == null)
-        {
-            Console.WriteLine("unexpected number. FAIL");
-        }
-        else
+        if (input != null)
         {
             string[] subs = input.Split(",");
 
@@ -86,11 +93,7 @@ class MyClass
     {
         Console.Write("Enter a string to reverse: ");
         string? input = Console.ReadLine();
-        if (input == null)
-        {
-            Console.WriteLine("unexpected number. FAIL");
-        }
-        else
+        if (input != null)
         {
             //for loop method
             string reverse = "";
@@ -102,7 +105,7 @@ class MyClass
             //using built-in System.Array.Reverse
             char[] chars = input.ToCharArray();
             Array.Reverse(chars);
-            Console.WriteLine($"Reverse with method : {new string (chars)}");    
+            Console.WriteLine($"Reverse with method : {new string(chars)}");
         }
     }
 
@@ -110,11 +113,7 @@ class MyClass
     {
         Console.Write("Enter a sentence to reverse: ");
         string? input = Console.ReadLine();
-        if (input == null)
-        {
-            Console.WriteLine("unexpected number. FAIL");
-        }
-        else
+        if (input != null)
         {
             string[] subs = input.Split();
             string result = "";
@@ -124,36 +123,26 @@ class MyClass
             }
             Console.WriteLine(result);
         }
-
     }
 
     public static void ReverseWordOrderJoin()
     {
         Console.Write("Enter a sentence to reverse: ");
         string? input = Console.ReadLine();
-        if (input == null)
-        {
-            Console.WriteLine("unexpected number. FAIL");
-        }
-        else
+        if (input != null)
         {
             string[] subs = input.Split();
             Array.Reverse(subs);
             string result = String.Join(" ", subs);
             Console.WriteLine(result);
         }
-
     }
 
     public static void IsPalindrome()
     {
         Console.Write("Enter a word to check if it is a palindrome: ");
         string? input = Console.ReadLine();
-        if (input == null)
-        {
-            Console.WriteLine("unexpected number. FAIL");
-        }
-        else
+        if (input != null)
         {
             //for loop method
             string reverse = "";
@@ -165,11 +154,30 @@ class MyClass
             {
                 Console.WriteLine($"{input} is a palindrome!");
             }
-            else 
+            else
             {
                 Console.WriteLine($"{input} is NOT a palindrome!");
             }
         }
+    }
+
+    public static string SubstringInString()
+    {
+        Console.WriteLine("Enter a string: ");
+        string? input = Console.ReadLine();
+        Console.WriteLine("Enter the string to find: ");
+        string? find = Console.ReadLine();
+        if (input != null && find != null)
+        {
+            bool b = input.Contains(find);
+            return b ? $"'{find}' is in the string '{input}': {b}" : $"'{find}' is not the string '{input}': {b}";
+        }
+        return "value was null";
+    }
+
+    public static void IsPrime()
+    {
+
     }
 }
 
