@@ -58,6 +58,7 @@ class MyClass
                     }
                 case "7":
                     {
+                        Console.WriteLine(IsPrime());
                         break;
                     }
                 case "exit":
@@ -175,9 +176,24 @@ class MyClass
         return "value was null";
     }
 
-    public static void IsPrime()
+    public static bool IsPrime()
     {
-
+        Console.WriteLine("Enter a positive value: ");
+        string? input = Console.ReadLine();
+        if (input != null)
+        {
+            int value = Convert.ToInt32(input);
+            if (value == 1) return false;
+            if (value == 2) return true;
+            if (value % 2 == 0) return false;
+            var squareRoot = (int)Math.Floor(Math.Sqrt(value));
+            for (int i = 3; i <= squareRoot; i += 2)
+            {
+                if (value % i == 0) return false;
+            }
+            return true;
+        }
+        return false;
     }
 }
 
